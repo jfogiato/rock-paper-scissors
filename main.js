@@ -1,10 +1,29 @@
-const Game = require('.game');
-const Player = require('.player');
+var currentGame// = new Game only instantiated after user clicks game;
+var user// = currentGame.player only instantiated after user clicks game;
+var computer// = currentGame.computer only instantiated after user clicks game;
+var fighters// = currentGame.getCleanBoard();
 
-var currentGame = new Game //only instantiated after user clicks game;
-var user = currentGame.player // only instantiated after user clicks game;
-var computer = currentGame.computer // only instantiated after user clicks game;
-var fighters = currentGame.getCleanBoard();
+var userSection = document.getElementById('userSection');
+var userWins = document.getElementById('userWins');
+var computerSection = document.getElementById('computerSection');
+var computerWins = document.getElementById('computerWins');
+var changeGameBtn = document.getElementById('changeGameButton');
+var classicSection = document.getElementById('classicSection');
+var hardSection = document.getElementById('hardSection');
+var classicFightersSection = document.getElementById('classicFighters');
+var hardFightersSection = document.getElementById('hardFighters');
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
