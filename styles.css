@@ -1,0 +1,40 @@
+* {
+  border: 1px solid blue;
+}
+
+.hidden {
+  display: none!important;
+}
+
+body {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.user-section, .computer-section, main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 25vw;
+}
+
+main {
+  width: 50vw;
+  justify-content: space-around;
+}
+
+.classic-fighters, .hard-fighters {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
