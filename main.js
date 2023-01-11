@@ -1,8 +1,8 @@
 // Global Variables/Data Model 👇
-var currentGame = new Game(); // = new Game only instantiated after user clicks game;
-var user = currentGame.player; // = currentGame.player only instantiated after user clicks game;
-var computer = currentGame.computer; // = currentGame.computer only instantiated after user clicks game;
-var fighters = currentGame.getCleanBoard(); // = currentGame.getCleanBoard();
+var currentGame;// = new Game only instantiated after user clicks game;
+var user;// = currentGame.player only instantiated after user clicks game;
+var computer; // = currentGame.computer only instantiated after user clicks game;
+var fighters;// = currentGame.getCleanBoard();
 
 // DOM Element Variables 👇
 var userSection = document.getElementById('userSection');
@@ -20,15 +20,20 @@ var hardFightersSection = document.getElementById('hardFighters');
 var changeGameBtn = document.getElementById('changeGameButton');
 
 // Event Listeners 👇
-choiceSection.addEventListener('click', () => {
-  generateVariables(event);
+choiceSection.addEventListener('click', (event) => {
+  var gameChoice = event.target.parentNode.id
+  generateVariables(gameChoice);
+  toggleFighters(gameChoice);
 });
 
 
 // Event Handlers/Functions 👇
-function generateVariables(event) {
-  var gameChoice = event.target.parentNode.id // classicSection or hardSection
-  toggleFighters(gameChoice);
+function generateVariables(gameType) {
+  var type = gameType === 'classicSection' ? 'Classic' : 'Hard';
+  currentGame = new Game(type);
+  user = currentGame.player;
+  computer = currentGame.computer;
+  fighters = currentGame.getCleanBoard();
 }
 
 function toggleFighters(gameChoice) {
