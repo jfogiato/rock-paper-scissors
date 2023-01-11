@@ -28,6 +28,10 @@ header {
   width: 25vw;
 }
 
+.classic-section, .hard-section {
+  cursor: pointer;
+}
+
 main {
   width: 50vw;
   justify-content: space-around;

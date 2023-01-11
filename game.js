@@ -1,9 +1,7 @@
-const Player = require('.player');
-
 class Game {
   constructor(gameType) {
-    this.player = new Player;
-    this.computer = new Player;
+    this.player = new Player('Human');
+    this.computer = new Player('Computer');
     this.type = gameType;
   }
 
@@ -53,5 +51,3 @@ class Game {
 ✅ A way to detect when a game is a draw (no one has won) - updateScore()
 ✅ A way to reset the Game’s board to begin a new game
 */
-
-module.exports = Game;
