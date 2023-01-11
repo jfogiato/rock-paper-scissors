@@ -4,7 +4,7 @@ var user;
 var computer;
 var fighters;
 var iconKeys = {
-  '🐱': 'assets/cat-toy.png', 
+  '🐱': 'assets/fig.png', 
   '🧹': 'assets/vacuum.png', 
   '🦴': 'assets/cat-toy.png', 
   '💣': 'assets/nuke.png', 
@@ -73,10 +73,9 @@ function toggleViews() {
 
 function generateFighters() {
   fighterSection.innerHTML = '';
-  Object.values(iconKeys);
   for (var i = 0; i < fighters.length; i++) {
     fighterSection.innerHTML += 
-    `<img src="${}" alt=""/>`
+    `<img src="${iconKeys[fighters[i]]}" alt=""/>`
   }
 }
 
