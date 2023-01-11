@@ -6,16 +6,16 @@ class Player {
     this.choice = '';
   }
 
-  takeTurn(choice, fighterArray) {
+  takeTurn(choice) {
     if (choice) {
       this.choice = choice;
     } else {
-      this.choice = this.chooseRandom(fighterArray);
+      this.choice = this.chooseRandom(fighters);
     }
   }
 
-  chooseRandom(fighterArray) {
-    return fighterArray[Math.floor(Math.random() * fighterArray.length)];
+  chooseRandom() {
+    return fighters[Math.floor(Math.random() * fighters.length)];
   }
 }
 

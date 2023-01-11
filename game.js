@@ -6,7 +6,7 @@ class Game {
   }
 
   getCleanBoard() {
-    if (this.type === 'classic') {
+    if (this.type === 'Classic') {
       return ['🐱', '🧹', '🦴'];
     } else {
       return ['🐱', '🧹', '🦴', '💣', '✌️'];

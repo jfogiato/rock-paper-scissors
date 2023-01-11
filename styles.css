@@ -1,5 +1,11 @@
 * {
   border: 1px solid blue;
+  font-family: 'Comfortaa';
+}
+
+html {
+  height: 100vh;
+  width: 100vw;
 }
 
 .hidden {
@@ -16,29 +22,86 @@ body {
 header {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
+  height: 25vh;
+  width: inherit;
 }
 
-.user-section, .computer-section, main {
+aside, main {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   width: 25vw;
-}
-
-.classic-section, .hard-section {
-  cursor: pointer;
+  height: 100vh;
 }
 
 main {
   width: 50vw;
-  justify-content: space-around;
+}
+
+.choice-section, .fighter-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: inherit;
+  height: 70vh;
+  justify-content: space-evenly;
+}
+
+.fighter-section {
+  flex-direction: row;
+}
+
+.classic-section, .hard-section {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: grey;
+  width: 20vw;
+  height: 20vh;
+  align-content: center;
+}
+
+h4 {
+  margin: 0;
+  width: 100%;
+  height: 10%;
+  text-align: center;
+}
+
+.classic-section > p, .hard-section > p {
+  width: 100%;
+  height: 90%;
+  margin: 0;
+  text-align: center;
 }
 
 .classic-fighters, .hard-fighters {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+div {
+  cursor: pointer;
+  font-size: 100px;
+  height: 100px;
+  width: 100px;
+}
+
+.selected-icon {
+  border: 2px solid green;
+}
+
+.button-section {
+  height: inherit;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  width: inherit;
+  justify-content: center;
 }
