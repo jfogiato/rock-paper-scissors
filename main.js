@@ -30,6 +30,12 @@ choiceSection.addEventListener('click', (event) => {
   switchHeader('Choose your fighter!');
 });
 
+fighterSection.addEventListener('click', (event) => {
+  var userChoice = event.target.innerText;
+  user.takeTurn(userChoice);
+  computer.takeTurn();
+});
+
 // Event Handlers/Functions 👇
 function generateVariables(gameChoice) {
   var type = gameChoice === 'classicSection' ? 'Classic' : 'Hard';
