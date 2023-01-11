@@ -1,7 +1,7 @@
 class Game {
   constructor(gameType) {
-    this.player = new Player('Human');
-    this.computer = new Player('Computer');
+    this.player = new Player('Human', '🧑‍🦲');
+    this.computer = new Player('Computer', '💻');
     this.type = gameType;
   }
 

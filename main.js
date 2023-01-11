@@ -3,6 +3,13 @@ var currentGame;
 var user;
 var computer;
 var fighters;
+var iconKeys = {
+  '🐱': 'assets/cat-toy.png', 
+  '🧹': 'assets/vacuum.png', 
+  '🦴': 'assets/cat-toy.png', 
+  '💣': 'assets/nuke.png', 
+  '✌️': 'assets/peace.png' 
+}
 
 // DOM Element Variables 👇
 var userSection = document.getElementById('userSection');
@@ -29,7 +36,7 @@ choiceSection.addEventListener('click', (event) => {
 
 fighterSection.addEventListener('click', (event) => {
   var userChoice = event.target;
-  userChoice.classList.add('.selected-icon')
+  userChoice.classList.add('.selected-icon') // figure this out
   completeRound(userChoice.innerText);
   updateBoard();
   updateHeader();
@@ -66,9 +73,10 @@ function toggleViews() {
 
 function generateFighters() {
   fighterSection.innerHTML = '';
+  Object.values(iconKeys);
   for (var i = 0; i < fighters.length; i++) {
     fighterSection.innerHTML += 
-    `<div>${fighters[i]}</div>`
+    `<img src="${}" alt=""/>`
   }
 }
 
