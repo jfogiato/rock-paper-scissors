@@ -1,8 +1,8 @@
 // Global Variables/Data Model 👇
-var currentGame;// = new Game only instantiated after user clicks game;
-var user;// = currentGame.player only instantiated after user clicks game;
-var computer; // = currentGame.computer only instantiated after user clicks game;
-var fighters;// = currentGame.getCleanBoard();
+var currentGame;
+var user;
+var computer;
+var fighters;
 
 // DOM Element Variables 👇
 var userSection = document.getElementById('userSection');
@@ -13,23 +13,26 @@ var computerWins = document.getElementById('computerWins');
 var choiceSection = document.getElementById('choiceSection');
 var classicSection = document.getElementById('classicSection');
 var hardSection = document.getElementById('hardSection');
+
 var fighterSection = document.getElementById('fighterSection');
-var classicFightersSection = document.getElementById('classicFighters');
-var hardFightersSection = document.getElementById('hardFighters');
+var classicFighters = document.getElementById('classicFighters');
+var hardFighters = document.getElementById('hardFighters');
 
 var changeGameBtn = document.getElementById('changeGameButton');
 
+var header2 = document.querySelector('h2');
+
 // Event Listeners 👇
 choiceSection.addEventListener('click', (event) => {
-  var gameChoice = event.target.parentNode.id
+  var gameChoice = event.target.parentNode.id;
   generateVariables(gameChoice);
   toggleFighters(gameChoice);
+  switchHeader('Choose your fighter!');
 });
 
-
 // Event Handlers/Functions 👇
-function generateVariables(gameType) {
-  var type = gameType === 'classicSection' ? 'Classic' : 'Hard';
+function generateVariables(gameChoice) {
+  var type = gameChoice === 'classicSection' ? 'Classic' : 'Hard';
   currentGame = new Game(type);
   user = currentGame.player;
   computer = currentGame.computer;
@@ -39,11 +42,15 @@ function generateVariables(gameType) {
 function toggleFighters(gameChoice) {
   choiceSection.classList.toggle('hidden');
   fighterSection.classList.toggle('hidden');
-  chooseSection(gameChoice)
+  chooseSection(gameChoice);
 }
 
-function chooseSection(choice) {
-  choice === 'classicSection' ? hardFighters.classList.add('hidden') : classicFighters.classList.add('hidden');
+function chooseSection(gameChoice) {
+  gameChoice === 'classicSection' ? hardFighters.classList.add('hidden') : classicFighters.classList.add('hidden');
+}
+
+function switchHeader(headerText) {
+  header2.innerText = headerText;
 }
 
 
