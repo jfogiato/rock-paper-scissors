@@ -23,35 +23,49 @@ var header2 = document.querySelector('h2');
 // Event Listeners 👇
 choiceSection.addEventListener('click', (event) => {
   var gameChoice = event.target.parentNode.id;
-  generateVariables(gameChoice);
-  toggleViews(gameChoice);
-  generateFighters(gameChoice)
+  generateNewGame(gameChoice);
+  generateVariables();
+  toggleViews();
+  generateFighters()
   updateHeader('Choose your fighter!');
 });
 
 fighterSection.addEventListener('click', (event) => {
-  var userChoice = event.target.innerText;
-
-  completeRound(userChoice);
-  updateScores()
+  var userChoice = event.target;
+  userChoice.classList.add('.selected-icon')
+  completeRound(userChoice.innerText);
+  updateBoard();
+  updateHeader();
+  updateScores();
+  generateFighters();
 });
 
+changeGameBtn.addEventListener('click', toggleViews);
+
 // Event Handlers/Functions 👇
-function generateVariables(gameChoice) {
+function generateNewGame(gameChoice) {
   var type = gameChoice === 'classicSection' ? 'Classic' : 'Hard';
-  currentGame = new Game(type);
+  if (currentGame) {
+    currentGame.type = type;
+  } else {
+    currentGame = new Game(type);
+  }
+}
+
+function generateVariables() {
   user = currentGame.player;
   computer = currentGame.computer;
   fighters = currentGame.getCleanBoard();
 }
 
-function toggleViews(gameChoice) {
+function toggleViews() {
   choiceSection.classList.toggle('hidden');
   fighterSection.classList.toggle('hidden');
   changeGameBtn.classList.toggle('hidden');
 }
 
-function generateFighters(gameChoice) {
+function generateFighters() {
+  fighterSection.innerHTML = '';
   for (var i = 0; i < fighters.length; i++) {
     fighterSection.innerHTML += 
     `<div>${fighters[i]}</div>`
@@ -59,21 +73,35 @@ function generateFighters(gameChoice) {
 }
 
 function updateHeader(newHeadText) {
-  header2.innerText = newHeadText;
+  if (newHeadText) {
+    header2.innerText = newHeadText;
+  } else {
+    setTimeout( () => {
+      header2.innerText = currentGame.determineWinner(user.choice, computer.choice);
+    }, 1000);
+  }
 }
 
 function completeRound(userChoice) {
   user.takeTurn(userChoice);
   computer.takeTurn();
-  updateHeader(currentGame.determineWinner(user.choice, computer.choice))
 }
 
 function updateScores() {
-  userWins.innerText = user.wins;
-  computerWins.innerText = computer.wins;
+  setTimeout( () => {
+    userWins.innerText = user.wins;
+    computerWins.innerText = computer.wins}
+    , 1000);
 }
 
-
+function updateBoard() {
+  setTimeout(() => {
+    fighterSection.innerHTML = `
+    <div class="selected-icon">${user.choice}</div>
+    <div>${computer.choice}</div>
+    `;
+  }, 1000);
+}
 
 
 
