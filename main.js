@@ -35,9 +35,8 @@ choiceSection.addEventListener('click', (event) => {
 });
 
 fighterSection.addEventListener('click', (event) => {
-  var userChoice = event.target;
-  userChoice.classList.add('.selected-icon') // figure this out
-  completeRound(userChoice.innerText);
+  var userChoice = event.target.id;
+  completeRound(userChoice);
   updateBoard();
   updateHeader();
   updateScores();
@@ -75,7 +74,7 @@ function generateFighters() {
   fighterSection.innerHTML = '';
   for (var i = 0; i < fighters.length; i++) {
     fighterSection.innerHTML += 
-    `<img src="${iconKeys[fighters[i]]}" alt=""/>`
+    `<img src="${iconKeys[fighters[i]]}" alt="" id="${fighters[i]}"/>`
   }
 }
 
