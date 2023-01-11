@@ -9,15 +9,12 @@ var userSection = document.getElementById('userSection');
 var userWins = document.getElementById('userWins');
 var computerSection = document.getElementById('computerSection');
 var computerWins = document.getElementById('computerWins');
-
 var choiceSection = document.getElementById('choiceSection');
 var classicSection = document.getElementById('classicSection');
 var hardSection = document.getElementById('hardSection');
-
 var fighterSection = document.getElementById('fighterSection');
-
 var changeGameBtn = document.getElementById('changeGameButton');
-
+var changeGameSection = document.getElementById('buttonSection');
 var header2 = document.querySelector('h2');
 
 // Event Listeners 👇
@@ -37,7 +34,10 @@ fighterSection.addEventListener('click', (event) => {
   updateBoard();
   updateHeader();
   updateScores();
-  generateFighters();
+  setTimeout(generateFighters, 3000);
+  setTimeout( () => {
+    updateHeader('Choose your fighter!');
+  }, 3000);
 });
 
 changeGameBtn.addEventListener('click', toggleViews);
@@ -61,7 +61,7 @@ function generateVariables() {
 function toggleViews() {
   choiceSection.classList.toggle('hidden');
   fighterSection.classList.toggle('hidden');
-  changeGameBtn.classList.toggle('hidden');
+  changeGameSection.classList.toggle('hidden');
 }
 
 function generateFighters() {

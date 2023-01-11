@@ -34,6 +34,7 @@ aside, main {
   justify-content: flex-start;
   align-items: center;
   width: 25vw;
+  height: 100vh;
 }
 
 main {
@@ -94,4 +95,13 @@ div {
 
 .selected-icon {
   border: 2px solid green;
+}
+
+.button-section {
+  height: inherit;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  width: inherit;
+  justify-content: center;
 }
