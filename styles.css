@@ -49,6 +49,10 @@ main {
   justify-content: space-evenly;
 }
 
+.fighter-section {
+  flex-direction: row;
+}
+
 .classic-section, .hard-section {
   cursor: pointer;
   display: flex;

@@ -15,8 +15,6 @@ var classicSection = document.getElementById('classicSection');
 var hardSection = document.getElementById('hardSection');
 
 var fighterSection = document.getElementById('fighterSection');
-var classicFighters = document.getElementById('classicFighters');
-var hardFighters = document.getElementById('hardFighters');
 
 var changeGameBtn = document.getElementById('changeGameButton');
 
@@ -26,14 +24,16 @@ var header2 = document.querySelector('h2');
 choiceSection.addEventListener('click', (event) => {
   var gameChoice = event.target.parentNode.id;
   generateVariables(gameChoice);
-  toggleFighters(gameChoice);
-  switchHeader('Choose your fighter!');
+  toggleViews(gameChoice);
+  generateFighters(gameChoice)
+  updateHeader('Choose your fighter!');
 });
 
 fighterSection.addEventListener('click', (event) => {
   var userChoice = event.target.innerText;
-  user.takeTurn(userChoice);
-  computer.takeTurn();
+
+  completeRound(userChoice);
+  updateScores()
 });
 
 // Event Handlers/Functions 👇
@@ -45,20 +45,33 @@ function generateVariables(gameChoice) {
   fighters = currentGame.getCleanBoard();
 }
 
-function toggleFighters(gameChoice) {
+function toggleViews(gameChoice) {
   choiceSection.classList.toggle('hidden');
   fighterSection.classList.toggle('hidden');
-  chooseSection(gameChoice);
+  changeGameBtn.classList.toggle('hidden');
 }
 
-function chooseSection(gameChoice) {
-  gameChoice === 'classicSection' ? hardFighters.classList.add('hidden') : classicFighters.classList.add('hidden');
+function generateFighters(gameChoice) {
+  for (var i = 0; i < fighters.length; i++) {
+    fighterSection.innerHTML += 
+    `<div>${fighters[i]}</div>`
+  }
 }
 
-function switchHeader(headerText) {
-  header2.innerText = headerText;
+function updateHeader(newHeadText) {
+  header2.innerText = newHeadText;
 }
 
+function completeRound(userChoice) {
+  user.takeTurn(userChoice);
+  computer.takeTurn();
+  updateHeader(currentGame.determineWinner(user.choice, computer.choice))
+}
+
+function updateScores() {
+  userWins.innerText = user.wins;
+  computerWins.innerText = computer.wins;
+}
 
 
 
