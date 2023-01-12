@@ -31,6 +31,7 @@ iconSection.addEventListener('click', (event) => {
     displayToken();
     hide(iconSection);
     show(choiceSection);
+    updateHeader('Choose your game mode!');
   }
 });
 
