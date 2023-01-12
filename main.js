@@ -20,6 +20,7 @@ var fighterSection = document.getElementById('fighterSection');
 var changeGameBtn = document.getElementById('changeGameButton');
 var changeGameSection = document.getElementById('buttonSection');
 var header2 = document.querySelector('h2');
+var ruleSection = document.getElementById('ruleSection')
 
 // Event Listeners 👇
 choiceSection.addEventListener('click', (event) => {
@@ -28,6 +29,7 @@ choiceSection.addEventListener('click', (event) => {
     currentGame.setChoice(gameChoice);
     currentGame.getCleanBoard();
     toggleViews();
+    toggleRules(gameChoice);
     generateFighters();
     updateHeader('Choose your fighter!');
   }
@@ -65,6 +67,13 @@ function toggleViews() {
   choiceSection.classList.toggle('hidden');
   fighterSection.classList.toggle('hidden');
   changeGameSection.classList.toggle('hidden');
+}
+
+function toggleRules(gameChoice) {
+  var section = document.getElementById(`${gameChoice}`);
+  var rules = section.cloneNode(true);
+  ruleSection.innerHTML = '';
+  ruleSection.appendChild(rules);
 }
 
 function generateFighters() {
