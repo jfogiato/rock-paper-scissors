@@ -1,7 +1,5 @@
 // Global Variables/Data Model 👇
-var currentGame;
-var user;
-var computer;
+var currentGame = new Game;
 var iconKeys = {
   '🐱': 'assets/fig.png', 
   '🧹': 'assets/vacuum.png', 
@@ -27,8 +25,8 @@ var header2 = document.querySelector('h2');
 choiceSection.addEventListener('click', (event) => {
   var gameChoice = event.target.parentNode.id;
   if (gameChoice) {
-    generateNewGame(gameChoice);
-    generateVariables();
+    currentGame.setChoice(gameChoice);
+    currentGame.getCleanBoard();
     toggleViews();
     generateFighters();
     updateHeader('Choose your fighter!');
@@ -36,9 +34,11 @@ choiceSection.addEventListener('click', (event) => {
 });
 
 fighterSection.addEventListener('click', (event) => {
-  var userChoice = event.target.id;
-  if (userChoice !== 'fighterSection') {
-    completeRound(userChoice);
+  var userChoice = event.target;
+  if (userChoice.id !== 'fighterSection') {
+    userChoice.style.filter = 'drop-shadow(20px 20px 15px #9A9A9A)';
+    currentGame.player.takeTurn(userChoice.id);
+    currentGame.computer.takeTurn();
     updateBoard();
     updateHeader();
     updateScores();
@@ -59,12 +59,6 @@ function generateNewGame(gameChoice) {
   } else {
     currentGame = new Game(type);
   }
-}
-
-function generateVariables() {
-  user = currentGame.player;
-  computer = currentGame.computer;
-  currentGame.getCleanBoard();
 }
 
 function toggleViews() {
@@ -91,23 +85,32 @@ function updateHeader(newHeadText) {
   }
 }
 
-function completeRound(userChoice) {
-  user.takeTurn(userChoice);
-  computer.takeTurn();
-}
-
 function updateScores() {
   setTimeout( () => {
-    userWins.innerText = user.wins;
-    computerWins.innerText = computer.wins}
+    userWins.innerText = currentGame.player.wins;
+    computerWins.innerText = currentGame.computer.wins}
     , 1000);
 }
 
 function updateBoard() {
   setTimeout(() => {
-    fighterSection.innerHTML = `
-    <img src="${iconKeys[user.choice]}" alt="" id="${user.choice}"/>
-    <img src="${iconKeys[computer.choice]}" alt="" id="${computer.choice}"/>
+    // var children = fighterSection.childNodes // array of child nodes with id's
+    // console.log(children)
+    // for (var i = 0; i < currentGame.fighters.length; i++) {
+    //   console.log('current loop id: ', children[i].id)
+    //   console.log('player choice;', currentGame.player.choice)
+    //   console.log('computer choice;', currentGame.computer.choice)
+    //   if (children[i].id !== (currentGame.player.choice || currentGame.computer.choice)) {
+    //     console.log('removing; ', children[i])
+    //     fighterSection.removeChild(children[i])
+    //   } else {
+    //     console.log('did not remove')
+    //   }
+    // }
+    fighterSection.innerHTML = 
+    `
+    <img src="${iconKeys[currentGame.player.choice]}" alt="" id="${currentGame.player.choice}"/>
+    <img src="${iconKeys[currentGame.computer.choice]}" alt="" id="${currentGame.computer.choice}"/>
     `;
   }, 1000);
 }

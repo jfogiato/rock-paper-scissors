@@ -1,5 +1,5 @@
 * {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   font-family: 'Comfortaa';
 }
 
@@ -74,10 +74,14 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background-color: grey;
+  background-color: rgb(225, 225, 225);
   width: 20vw;
   height: 20vh;
   align-content: center;
+}
+
+.classic-section:hover, .hard-section:hover {
+  background-color: grey;
 }
 
 h4 {
@@ -116,10 +120,6 @@ div {
   width: 100px;
 }
 
-.selected-icon {
-  border: 2px solid green;
-}
-
 .button-section {
   height: inherit;
   display: flex;
@@ -135,6 +135,10 @@ img {
   cursor: pointer;
 }
 
+img:hover {
+  filter:drop-shadow(20px 20px 15px #9A9A9A);
+}
+
 .user-token, .computer-token{
   font-size: 3vw;
 }
@@ -146,4 +150,15 @@ button {
   width: 50%;
   height: 10%;
   font-size: 70%;
+  background-color: rgb(225, 225, 225);
+  box-shadow: 3px 3px 2px 2px;
+}
+
+button:hover {
+  background-color:rgb(141, 141, 141);
+}
+
+button:active {
+  transform:translateY(3px);
+  box-shadow: 1px 1px 2px 2px;
 }

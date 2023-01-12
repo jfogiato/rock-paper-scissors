@@ -1,9 +1,13 @@
 class Game {
-  constructor(gameType) {
+  constructor() {
     this.player = new Player('Human', '🧑‍🦲');
     this.computer = new Player('Computer', '💻');
-    this.type = gameType;
+    this.type;
     this.fighters;
+  }
+
+  setChoice(gameChoice) {
+    this.type = gameChoice === 'classicSection' ? 'Classic' : 'Hard';
   }
 
   getCleanBoard() {
