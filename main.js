@@ -25,7 +25,8 @@ var header2 = document.querySelector('h2');
 
 // Event Listeners 👇
 choiceSection.addEventListener('click', (event) => {
-  var gameChoice = event.target.parentNode.id;
+  var gameChoice = event.target.parentNode.parentNode.id;
+  console.log(gameChoice)
   generateNewGame(gameChoice);
   generateVariables();
   toggleViews();
