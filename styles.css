@@ -45,6 +45,11 @@ aside, main {
   height: 100vh;
 }
 
+aside {
+  font-size: 2vw;
+  background-color: aqua;
+}
+
 main {
   width: 50vw;
 }
@@ -75,18 +80,6 @@ main {
   align-content: center;
 }
 
-.user-section, .computer-section {
-  font-size: 2vw;
-}
-
-.choices {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 h4 {
   margin: 0;
   padding-top: 3%;
@@ -96,7 +89,7 @@ h4 {
   text-align: center;
 }
 
-.choices > p {
+.classic-section > p, .hard-section > p {
   display: flex;
   margin: 0;
   font-size: 1.75vh;
@@ -139,4 +132,18 @@ div {
 img {
   height: 30%;
   width: 30%;
+  cursor: pointer;
+}
+
+.user-token, .computer-token{
+  font-size: 3vw;
+}
+
+button {
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 10px;
+  width: 50%;
+  height: 10%;
+  font-size: 70%;
 }

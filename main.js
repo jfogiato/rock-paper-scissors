@@ -25,25 +25,28 @@ var header2 = document.querySelector('h2');
 
 // Event Listeners 👇
 choiceSection.addEventListener('click', (event) => {
-  var gameChoice = event.target.parentNode.parentNode.id;
-  console.log(gameChoice)
-  generateNewGame(gameChoice);
-  generateVariables();
-  toggleViews();
-  generateFighters();
-  updateHeader('Choose your fighter!');
+  var gameChoice = event.target.parentNode.id;
+  if (gameChoice) {
+    generateNewGame(gameChoice);
+    generateVariables();
+    toggleViews();
+    generateFighters();
+    updateHeader('Choose your fighter!');
+  }
 });
 
 fighterSection.addEventListener('click', (event) => {
   var userChoice = event.target.id;
-  completeRound(userChoice);
-  updateBoard();
-  updateHeader();
-  updateScores();
-  setTimeout(generateFighters, 3000);
-  setTimeout( () => {
-    updateHeader('Choose your fighter!');
-  }, 3000);
+  if (userChoice !== 'fighterSection') {
+    completeRound(userChoice);
+    updateBoard();
+    updateHeader();
+    updateScores();
+    setTimeout(generateFighters, 3000);
+    setTimeout( () => {
+      updateHeader('Choose your fighter!');
+    }, 3000);
+  }
 });
 
 changeGameBtn.addEventListener('click', toggleViews);
