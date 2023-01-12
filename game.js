@@ -40,10 +40,10 @@ class Game {
     if (playerWhoWon === 'draw') {
       return 'It was a draw!';
     } else if (playerWhoWon === 'computer') {
-      this.computer.wins += 1;
+      this.computer.win();
       return 'The computer won!';
     } else {
-      this.player.wins += 1;
+      this.player.win();
       return 'You won!';
     }
   }

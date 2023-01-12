@@ -55,6 +55,21 @@ main {
   width: 50vw;
 }
 
+.icon-section {
+  font-size: 10vh;
+  display: flex;
+  /* height: 70vh; */
+  width: 50vh;
+  align-items: center;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+
+.token:hover {
+  cursor: pointer;
+}
+
 .choice-section, .fighter-section {
   display: flex;
   flex-wrap: wrap;
@@ -115,11 +130,6 @@ h4 {
   justify-content: center;
   align-items: center;
   height: 100%;
-}
-
-.rule-section > .hard-section:hover, .rule-section > .classic-section:hover {
-  background-color: rgb(225, 225, 225);
-  cursor: default;
 }
 
 .classic-fighters, .hard-fighters {

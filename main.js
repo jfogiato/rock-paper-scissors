@@ -9,8 +9,10 @@ var iconKeys = {
 }
 
 // DOM Element Variables 👇
+var iconSection = document.getElementById('iconSection')
 var userSection = document.getElementById('userSection');
 var userWins = document.getElementById('userWins');
+var userToken = document.getElementById('userToken');
 var computerSection = document.getElementById('computerSection');
 var computerWins = document.getElementById('computerWins');
 var choiceSection = document.getElementById('choiceSection');
@@ -23,12 +25,23 @@ var header2 = document.querySelector('h2');
 var ruleSection = document.getElementById('ruleSection')
 
 // Event Listeners 👇
+iconSection.addEventListener('click', (event) => {
+  if (event.target.classList.contains("token")) {
+    currentGame.player.updateToken(event.target.innerText);
+    displayToken();
+    hide(iconSection);
+    show(choiceSection);
+  }
+});
+
 choiceSection.addEventListener('click', (event) => {
   var gameChoice = event.target.parentNode.id;
   if (gameChoice) {
     currentGame.setChoice(gameChoice);
     currentGame.getCleanBoard();
-    toggleViews();
+    hide(choiceSection);
+    show(fighterSection);
+    show(changeGameSection);
     toggleRules(gameChoice);
     generateFighters();
     updateHeader('Choose your fighter!');
@@ -44,16 +57,23 @@ fighterSection.addEventListener('click', (event) => {
     updateBoard();
     updateHeader();
     updateScores();
-    setTimeout(generateFighters, 3000);
+    setTimeout(generateFighters, 4500);
     setTimeout( () => {
       updateHeader('Choose your fighter!');
-    }, 3000);
+    }, 4500);
   }
 });
 
-changeGameBtn.addEventListener('click', toggleViews);
+changeGameBtn.addEventListener('click', () => {
+  hide(fighterSection);
+  show(choiceSection);
+});
 
 // Event Handlers/Functions 👇
+function displayToken() {
+  userToken.innerText = currentGame.player.token;
+}
+
 function generateNewGame(gameChoice) {
   var type = gameChoice === 'classicSection' ? 'Classic' : 'Hard';
   if (currentGame) {
@@ -63,10 +83,12 @@ function generateNewGame(gameChoice) {
   }
 }
 
-function toggleViews() {
-  choiceSection.classList.toggle('hidden');
-  fighterSection.classList.toggle('hidden');
-  changeGameSection.classList.toggle('hidden');
+function hide(element) {
+  element.classList.add('hidden');
+}
+
+function show(element) {
+  element.classList.remove('hidden');
 }
 
 function toggleRules(gameChoice) {
@@ -80,7 +102,7 @@ function generateFighters() {
   fighterSection.innerHTML = '';
   for (var i = 0; i < currentGame.fighters.length; i++) {
     fighterSection.innerHTML += 
-    `<img src="${iconKeys[currentGame.fighters[i]]}" alt="" id="${currentGame.fighters[i]}"/>`
+    `<img src="${iconKeys[currentGame.fighters[i]]}" alt="${currentGame.fighters[i]}" id="${currentGame.fighters[i]}"/>`
   }
 }
 
