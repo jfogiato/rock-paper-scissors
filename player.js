@@ -10,12 +10,12 @@ class Player {
     if (choice) {
       this.choice = choice;
     } else {
-      this.choice = this.chooseRandom(fighters);
+      this.choice = this.chooseRandom();
     }
   }
 
   chooseRandom() {
-    return fighters[Math.floor(Math.random() * fighters.length)];
+    return currentGame.fighters[Math.floor(Math.random() * currentGame.fighters.length)];
   }
 }
 

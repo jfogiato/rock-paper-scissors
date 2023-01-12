@@ -3,28 +3,29 @@ class Game {
     this.player = new Player('Human', '🧑‍🦲');
     this.computer = new Player('Computer', '💻');
     this.type = gameType;
+    this.fighters;
   }
 
   getCleanBoard() {
     if (this.type === 'Classic') {
-      return ['🐱', '🧹', '🦴'];
+      this.fighters = ['🐱', '🧹', '🦴'];
     } else {
-      return ['🐱', '🧹', '🦴', '💣', '✌️'];
+      this.fighters = ['🐱', '🧹', '🦴', '💣', '✌️'];
     }
   }
 
-  determineWinner(playerChoice, computerChoice) {
-    if (playerChoice === computerChoice) {
+  determineWinner() {
+    if (this.player.choice === this.computer.choice) {
       return this.updateScore('draw');
-    } else if (playerChoice === '🐱' && (computerChoice === '🧹' || computerChoice === '💣')) { 
+    } else if (this.player.choice === '🐱' && (this.computer.choice === '🧹' || this.computer.choice === '💣')) { 
       return this.updateScore('computer');
-    }  else if (playerChoice === '🧹' && (computerChoice === '✌️' || computerChoice === '🦴')) {
+    }  else if (this.player.choice === '🧹' && (this.computer.choice === '✌️' || this.computer.choice === '🦴')) {
       return this.updateScore('computer');
-    } else if (playerChoice === '🦴' && (computerChoice === '🐱' || computerChoice === '💣')) {
+    } else if (this.player.choice === '🦴' && (this.computer.choice === '🐱' || this.computer.choice === '💣')) {
       return this.updateScore('computer');
-    } else if (playerChoice === '💣' && (computerChoice === '✌️' || computerChoice === '🧹')) {
+    } else if (this.player.choice === '💣' && (this.computer.choice === '✌️' || this.computer.choice === '🧹')) {
       return this.updateScore('computer');
-    } else if (playerChoice === '✌️' && (computerChoice === '🐱' || computerChoice === '🦴')) {
+    } else if (this.player.choice === '✌️' && (this.computer.choice === '🐱' || this.computer.choice === '🦴')) {
       return this.updateScore('computer');
     } else {
       return this.updateScore('user');

@@ -2,7 +2,6 @@
 var currentGame;
 var user;
 var computer;
-var fighters;
 var iconKeys = {
   '🐱': 'assets/fig.png', 
   '🧹': 'assets/vacuum.png', 
@@ -30,7 +29,7 @@ choiceSection.addEventListener('click', (event) => {
   generateNewGame(gameChoice);
   generateVariables();
   toggleViews();
-  generateFighters()
+  generateFighters();
   updateHeader('Choose your fighter!');
 });
 
@@ -61,7 +60,7 @@ function generateNewGame(gameChoice) {
 function generateVariables() {
   user = currentGame.player;
   computer = currentGame.computer;
-  fighters = currentGame.getCleanBoard();
+  currentGame.getCleanBoard();
 }
 
 function toggleViews() {
@@ -72,9 +71,9 @@ function toggleViews() {
 
 function generateFighters() {
   fighterSection.innerHTML = '';
-  for (var i = 0; i < fighters.length; i++) {
+  for (var i = 0; i < currentGame.fighters.length; i++) {
     fighterSection.innerHTML += 
-    `<img src="${iconKeys[fighters[i]]}" alt="" id="${fighters[i]}"/>`
+    `<img src="${iconKeys[currentGame.fighters[i]]}" alt="" id="${currentGame.fighters[i]}"/>`
   }
 }
 
@@ -83,7 +82,7 @@ function updateHeader(newHeadText) {
     header2.innerText = newHeadText;
   } else {
     setTimeout( () => {
-      header2.innerText = currentGame.determineWinner(user.choice, computer.choice);
+      header2.innerText = currentGame.determineWinner();
     }, 1000);
   }
 }
@@ -103,17 +102,8 @@ function updateScores() {
 function updateBoard() {
   setTimeout(() => {
     fighterSection.innerHTML = `
-    <div class="selected-icon">${user.choice}</div>
-    <div>${computer.choice}</div>
+    <img src="${iconKeys[user.choice]}" alt="" id="${user.choice}"/>
+    <img src="${iconKeys[computer.choice]}" alt="" id="${computer.choice}"/>
     `;
   }, 1000);
 }
-
-
-
-
-/*
- - Clicking one of the game options (classic or hard) generates a new instance of Game and sets the type equal to the type that was clicked.
- - Based on Game.type, appropriate list of fighters is displayed on DOM (3 or 5)
- - On clicking one of the fighters, Game method is called to 
-*/
