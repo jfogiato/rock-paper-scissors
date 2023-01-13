@@ -1,30 +1,35 @@
 class Game {
-  constructor(gameType) {
-    this.player = new Player('Human');
-    this.computer = new Player('Computer');
-    this.type = gameType;
+  constructor() {
+    this.player = new Player('Human', '🧑‍🦲');
+    this.computer = new Player('Computer', '💻');
+    this.type;
+    this.fighters;
+  }
+
+  setChoice(gameChoice) {
+    this.type = gameChoice === 'classicSection' ? 'Classic' : 'Hard';
   }
 
   getCleanBoard() {
     if (this.type === 'Classic') {
-      return ['🐱', '🧹', '🦴'];
+      this.fighters = ['🐱', '🧹', '🦴'];
     } else {
-      return ['🐱', '🧹', '🦴', '💣', '✌️'];
+      this.fighters = ['🐱', '🧹', '🦴', '💣', '✌️'];
     }
   }
 
-  determineWinner(playerChoice, computerChoice) {
-    if (playerChoice === computerChoice) {
+  determineWinner() {
+    if (this.player.choice === this.computer.choice) {
       return this.updateScore('draw');
-    } else if (playerChoice === '🐱' && (computerChoice === '🧹' || computerChoice === '💣')) { 
+    } else if (this.player.choice === '🐱' && (this.computer.choice === '🧹' || this.computer.choice === '💣')) { 
       return this.updateScore('computer');
-    }  else if (playerChoice === '🧹' && (computerChoice === '✌️' || computerChoice === '🦴')) {
+    }  else if (this.player.choice === '🧹' && (this.computer.choice === '✌️' || this.computer.choice === '🦴')) {
       return this.updateScore('computer');
-    } else if (playerChoice === '🦴' && (computerChoice === '🐱' || computerChoice === '💣')) {
+    } else if (this.player.choice === '🦴' && (this.computer.choice === '🐱' || this.computer.choice === '💣')) {
       return this.updateScore('computer');
-    } else if (playerChoice === '💣' && (computerChoice === '✌️' || computerChoice === '🧹')) {
+    } else if (this.player.choice === '💣' && (this.computer.choice === '✌️' || this.computer.choice === '🧹')) {
       return this.updateScore('computer');
-    } else if (playerChoice === '✌️' && (computerChoice === '🐱' || computerChoice === '🦴')) {
+    } else if (this.player.choice === '✌️' && (this.computer.choice === '🐱' || this.computer.choice === '🦴')) {
       return this.updateScore('computer');
     } else {
       return this.updateScore('user');
@@ -35,10 +40,10 @@ class Game {
     if (playerWhoWon === 'draw') {
       return 'It was a draw!';
     } else if (playerWhoWon === 'computer') {
-      this.computer.wins += 1;
+      this.computer.win();
       return 'The computer won!';
     } else {
-      this.player.wins += 1;
+      this.player.win();
       return 'You won!';
     }
   }

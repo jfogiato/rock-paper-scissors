@@ -1,8 +1,8 @@
 class Player {
-  constructor(name) {
+  constructor(name, token) {
     this.name = name;
     this.wins = 0;
-    this.token = '🧑‍🦲';
+    this.token = token;
     this.choice = '';
   }
 
@@ -10,12 +10,20 @@ class Player {
     if (choice) {
       this.choice = choice;
     } else {
-      this.choice = this.chooseRandom(fighters);
+      this.choice = this.chooseRandom();
     }
   }
 
   chooseRandom() {
-    return fighters[Math.floor(Math.random() * fighters.length)];
+    return currentGame.fighters[Math.floor(Math.random() * currentGame.fighters.length)];
+  }
+
+  win() {
+    this.wins += 1;
+  }
+
+  updateToken(token) {
+    this.token = token;
   }
 }
 
