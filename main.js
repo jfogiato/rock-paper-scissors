@@ -48,16 +48,17 @@ choiceSection.addEventListener('click', (event) => {
 fighterSection.addEventListener('click', (event) => {
   var userChoice = event.target;
   if (userChoice.id !== 'fighterSection') {
-    userChoice.style.filter = 'drop-shadow(20px 20px 15px #9A9A9A)';
     currentGame.player.takeTurn(userChoice.id);
     currentGame.computer.takeTurn();
+    addShadow(userChoice);
     updateBoard();
     updateHeader();
     updateScores();
-    setTimeout(generateFighters, 4500);
     setTimeout( () => {
+      generateFighters();
       updateHeader('Choose your fighter!');
-    }, 4500);
+      currentGame.resetChoices();
+    }, 3500);
   }
 });
 
@@ -69,6 +70,10 @@ changeGameBtn.addEventListener('click', () => {
 });
 
 // Event Handlers/Functions 👇
+function addShadow(userChoice) {
+  userChoice.style.filter = 'drop-shadow(20px 20px 15px #9A9A9A)';
+}
+
 function displayToken() {
   userToken.innerText = currentGame.player.token;
 }
