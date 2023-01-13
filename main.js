@@ -24,6 +24,7 @@ var header2 = document.querySelector('h2');
 iconSection.addEventListener('click', (event) => {
   if (event.target.classList.contains("token")) {
     currentGame.player.updateToken(event.target.innerText);
+    // retrieveWins();
     displayToken();
     hide(iconSection);
     show(choiceSection);
@@ -39,6 +40,7 @@ choiceSection.addEventListener('click', (event) => {
     hide(choiceSection);
     show(fighterSection);
     show(changeGameSection);
+    show(ruleSection);
     displayRules(gameChoice);
     generateFighters();
     updateHeader('Choose your fighter!');
@@ -54,11 +56,12 @@ fighterSection.addEventListener('click', (event) => {
     updateBoard();
     updateHeader();
     updateScores();
+    // saveWins();
     setTimeout( () => {
       generateFighters();
       updateHeader('Choose your fighter!');
       currentGame.resetChoices();
-    }, 3500);
+    }, 2000);
   }
 });
 
@@ -109,7 +112,7 @@ function updateHeader(newHeadText) {
   } else {
     setTimeout( () => {
       header2.innerText = currentGame.determineWinner();
-    }, 1000);
+    }, 500);
   }
 }
 
@@ -117,12 +120,22 @@ function updateScores() {
   setTimeout( () => {
     userWins.innerText = currentGame.player.wins;
     computerWins.innerText = currentGame.computer.wins}
-    , 1000);
+    , 500);
 }
 
 function updateBoard() {
   setTimeout(() => {
     fighterSection.innerHTML = 
     `<img src="${iconKeys[currentGame.player.choice]}" alt="" id="${currentGame.player.choice}"/> <img src="${iconKeys[currentGame.computer.choice]}" alt="" id="${currentGame.computer.choice}"/>`;
-  }, 1000);
+  }, 500);
+}
+
+function saveWins() {
+  currentGame.player.saveWinsToStorage();
+  currentGame.computer.saveWinsToStorage();
+}
+
+function retrieveWins() {
+  currentGame.player.retrieveWinsFromStorage();
+  currentGame.computer.retrieveWinsFromStorage();
 }

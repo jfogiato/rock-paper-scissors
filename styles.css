@@ -17,7 +17,14 @@ body {
 }
 
 h1 {
-  font-size: 3vw;
+  font-size: 3.5vw;
+  color: #090909;
+  text-shadow:   2px 2px 0px #0364aa, 
+  4px 4px 0px #3e6a83, 
+  6px 6px 0px  #90B1E0, 
+  8px 8px 0px #ADB6C4,
+  10px 10px 0px #FFC49B, 
+  12px 12px 0px #ffd07f;
 }
 
 h2 {
@@ -27,10 +34,10 @@ h2 {
 h4 {
   text-align: center;
   cursor: pointer;
-  font-style: oblique;
   margin: 0;
   padding-top: 3%;
-  font-size: 2vh;
+  padding-bottom: 2%;
+  font-size: 2.5vh;
   width: 100%;
 }
 
@@ -80,6 +87,7 @@ main {
 
 .token:hover {
   cursor: pointer;
+  filter: drop-shadow(20px 20px 15px #9A9A9A);
 }
 
 /* Main Section (Game Choices and Fighters) */
@@ -112,8 +120,9 @@ main {
 }
 
 .classic-rules:hover, 
-.hard-rules:hover {
-  background-color: grey;
+.hard-rules:hover,
+button:hover {
+  background-color: rgba(162, 161, 161, 0.697);
 }
 
 .classic-rules > p, 
@@ -146,7 +155,7 @@ img {
 }
 
 img:hover {
-  filter:drop-shadow(20px 20px 15px #9A9A9A);
+  filter: drop-shadow(20px 20px 15px #9a9a9a);
 }
 
 /* User and Computer Section Components */
@@ -175,24 +184,24 @@ img:hover {
 .rule-section > .classic-rules:hover,
 .rule-section > .classic-rules:hover,
 .rule-section > .hard-rules:hover,
-.rule-section > .hard-rules:hover {
+.rule-section > .hard-rules:hover,
+.rule-section > .classic-rules > p,
+.rule-section > .classic-rules > h4,
+.rule-section > .hard-rules > p,
+.rule-section > .hard-rules > h4 {
   cursor: default;
   background-color: rgb(225, 225, 225);
+  border-radius: 8px;
 }
 
 button {
   cursor: pointer;
   border-radius: 4px;
-  padding: 10px;
   width: 50%;
   height: 10%;
   font-size: 70%;
   background-color: rgb(225, 225, 225);
   box-shadow: 3px 3px 2px 2px;
-}
-
-button:hover {
-  background-color:rgb(141, 141, 141);
 }
 
 button:active {

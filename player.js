@@ -30,12 +30,21 @@ class Player {
     this.choice = '';
   }
 
-  saveWinsToStorage() {
+  // saveWinsToStorage() {
+  //   var userDetails = {
+  //     name: this.name,
+  //     wins: this.wins
+  //   };
+  //   window.localStorage.setItem('player', JSON.stringify(userDetails)); 
+  // }
 
-  }
+  // retrieveWinsFromStorage() {
+  //   this.name = window.localStorage.getItem('name');
+  //   this.wins = window.localStorage.getItem('wins');
+  // }
 
-  retrieveWinsFromStorage() {
-    
-  }
+  // clearWinsFromStorage() {
+  //   window.localStorage.clear();
+  // }
 }
 
