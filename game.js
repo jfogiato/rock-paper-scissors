@@ -7,7 +7,7 @@ class Game {
   }
 
   setGameChoice(gameChoice) {
-    this.type = gameChoice === 'classicSection' ? 'Classic' : 'Hard';
+    this.type = gameChoice === 'classicRules' ? 'Classic' : 'Hard';
   }
 
   resetChoices() {

@@ -63,6 +63,7 @@ fighterSection.addEventListener('click', (event) => {
 });
 
 changeGameBtn.addEventListener('click', () => {
+  updateHeader('Choose your game mode!');
   hide(fighterSection);
   hide(changeGameSection);
   show(choiceSection);

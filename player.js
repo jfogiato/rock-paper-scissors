@@ -29,5 +29,13 @@ class Player {
   resetChoice() {
     this.choice = '';
   }
+
+  saveWinsToStorage() {
+
+  }
+
+  retrieveWinsFromStorage() {
+    
+  }
 }
 
