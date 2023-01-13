@@ -25,5 +25,17 @@ class Player {
   updateToken(token) {
     this.token = token;
   }
+
+  resetChoice() {
+    this.choice = '';
+  }
+
+  saveWinsToStorage() {
+
+  }
+
+  retrieveWinsFromStorage() {
+    
+  }
 }
 

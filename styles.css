@@ -1,5 +1,4 @@
 * {
-  /* border: 1px solid blue; */
   font-family: 'Comfortaa';
   cursor: default;
 }
@@ -8,6 +7,7 @@
   display: none!important;
 }
 
+/* Whole Elements */
 body {
   display: flex;
   flex-direction: row;
@@ -24,6 +24,16 @@ h2 {
   font-size: 2.5vw;
 }
 
+h4 {
+  text-align: center;
+  cursor: pointer;
+  font-style: oblique;
+  margin: 0;
+  padding-top: 3%;
+  font-size: 2vh;
+  width: 100%;
+}
+
 header {
   display: flex;
   flex-direction: column;
@@ -33,7 +43,8 @@ header {
   width: inherit;
 }
 
-aside, main {
+aside, 
+main {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -52,14 +63,15 @@ main {
   background-color: ivory;
 }
 
+/* Front Page Icon Section */
 .icon-section {
-  font-size: 10vh;
   display: flex;
-  width: 50vh;
-  height: 100%;
   align-content: center;
   justify-content: center;
   flex-wrap: wrap;
+  width: 50vh;
+  height: 100%;
+  font-size: 10vh;
 }
 
 .token {
@@ -70,82 +82,61 @@ main {
   cursor: pointer;
 }
 
-.choice-section, .fighter-section {
+/* Main Section (Game Choices and Fighters) */
+.choice-section, 
+.fighter-section {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
   width: inherit;
   height: 70vh;
-  justify-content: space-evenly;
 }
 
 .fighter-section {
   flex-direction: row;
 }
 
-.classic-section, .hard-section {
+.classic-rules, 
+.hard-rules {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  align-content: center;
   background-color: rgb(225, 225, 225);
   border-radius: 8px;
   width: 20vw;
   height: 20vh;
-  align-content: center;
 }
 
-.classic-section:hover, .hard-section:hover {
+.classic-rules:hover, 
+.hard-rules:hover {
   background-color: grey;
-  
 }
 
-h4 {
-  margin: 0;
-  cursor: pointer;
-  padding-top: 3%;
-  font-size: 2vh;
-  font-style: oblique;
-  width: 100%;
-  text-align: center;
-}
-
-.classic-section > p, .hard-section > p {
+.classic-rules > p, 
+.hard-rules > p {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
   cursor: pointer;
+  text-align: center;
   margin: 0;
   font-size: 1.75vh;
   flex: 1;
-  text-align: center;
   width: 100%;
   height: 100%;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
 }
 
-.classic-fighters, .hard-fighters {
+.classic-fighters, 
+.hard-fighters {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-}
-
-div {
-  cursor: pointer;
-  font-size: 100px;
-  height: 100px;
-  width: 100px;
-}
-
-.button-section {
-  height: inherit;
-  display: flex;
-  align-items: center;
-  align-content: center;
-  width: inherit;
-  justify-content: center;
 }
 
 img {
@@ -158,8 +149,35 @@ img:hover {
   filter:drop-shadow(20px 20px 15px #9A9A9A);
 }
 
-.user-token, .computer-token{
+/* User and Computer Section Components */
+.button-section {
+  height: inherit;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  width: inherit;
+  justify-content: center;
+}
+
+.user-token, 
+.computer-token{
   font-size: 4vw;
+}
+
+.rule-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  cursor: default;
+}
+
+.rule-section > .classic-rules:hover,
+.rule-section > .classic-rules:hover,
+.rule-section > .hard-rules:hover,
+.rule-section > .hard-rules:hover {
+  cursor: default;
+  background-color: rgb(225, 225, 225);
 }
 
 button {
@@ -180,12 +198,4 @@ button:hover {
 button:active {
   transform:translateY(3px);
   box-shadow: 1px 1px 2px 2px;
-}
-
-.rule-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  cursor: default;
 }

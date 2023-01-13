@@ -10,19 +10,15 @@ var iconKeys = {
 
 // DOM Element Variables 👇
 var iconSection = document.getElementById('iconSection');
-var userSection = document.getElementById('userSection');
 var userWins = document.getElementById('userWins');
 var userToken = document.getElementById('userToken');
-var computerSection = document.getElementById('computerSection');
 var computerWins = document.getElementById('computerWins');
 var choiceSection = document.getElementById('choiceSection');
-var classicSection = document.getElementById('classicSection');
-var hardSection = document.getElementById('hardSection');
 var fighterSection = document.getElementById('fighterSection');
 var changeGameBtn = document.getElementById('changeGameButton');
 var changeGameSection = document.getElementById('buttonSection');
-var header2 = document.querySelector('h2');
 var ruleSection = document.getElementById('ruleSection');
+var header2 = document.querySelector('h2');
 
 // Event Listeners 👇
 iconSection.addEventListener('click', (event) => {
@@ -38,12 +34,12 @@ iconSection.addEventListener('click', (event) => {
 choiceSection.addEventListener('click', (event) => {
   var gameChoice = event.target.parentNode.id;
   if (gameChoice) {
-    currentGame.setChoice(gameChoice);
-    currentGame.getCleanBoard();
+    currentGame.setGameChoice(gameChoice);
+    currentGame.resetBoard();
     hide(choiceSection);
     show(fighterSection);
     show(changeGameSection);
-    toggleRules(gameChoice);
+    displayRules(gameChoice);
     generateFighters();
     updateHeader('Choose your fighter!');
   }
@@ -52,27 +48,33 @@ choiceSection.addEventListener('click', (event) => {
 fighterSection.addEventListener('click', (event) => {
   var userChoice = event.target;
   if (userChoice.id !== 'fighterSection') {
-    userChoice.style.filter = 'drop-shadow(20px 20px 15px #9A9A9A)';
     currentGame.player.takeTurn(userChoice.id);
     currentGame.computer.takeTurn();
+    addShadow(userChoice);
     updateBoard();
     updateHeader();
     updateScores();
-    setTimeout(generateFighters, 4500);
     setTimeout( () => {
+      generateFighters();
       updateHeader('Choose your fighter!');
-    }, 4500);
+      currentGame.resetChoices();
+    }, 3500);
   }
 });
 
 changeGameBtn.addEventListener('click', () => {
+  updateHeader('Choose your game mode!');
   hide(fighterSection);
   hide(changeGameSection);
   show(choiceSection);
-  toggleRules();
+  displayRules();
 });
 
 // Event Handlers/Functions 👇
+function addShadow(userChoice) {
+  userChoice.style.filter = 'drop-shadow(20px 20px 15px #9A9A9A)';
+}
+
 function displayToken() {
   userToken.innerText = currentGame.player.token;
 }
@@ -85,7 +87,7 @@ function show(element) {
   element.classList.remove('hidden');
 }
 
-function toggleRules(gameChoice) {
+function displayRules(gameChoice) {
   ruleSection.innerHTML = '';
   if (gameChoice) {
     var section = document.getElementById(`${gameChoice}`).cloneNode(true);
@@ -97,7 +99,7 @@ function generateFighters() {
   fighterSection.innerHTML = '';
   for (var i = 0; i < currentGame.fighters.length; i++) {
     fighterSection.innerHTML += 
-    `<img src="${iconKeys[currentGame.fighters[i]]}" alt="${currentGame.fighters[i]}" id="${currentGame.fighters[i]}"/>`
+    `<img src="${iconKeys[currentGame.fighters[i]]}" alt="${currentGame.fighters[i]}" id="${currentGame.fighters[i]}"/>`;
   }
 }
 
@@ -120,23 +122,7 @@ function updateScores() {
 
 function updateBoard() {
   setTimeout(() => {
-    // var children = fighterSection.childNodes // array of child nodes with id's
-    // console.log(children)
-    // for (var i = 0; i < currentGame.fighters.length; i++) {
-    //   console.log('current loop id: ', children[i].id)
-    //   console.log('player choice;', currentGame.player.choice)
-    //   console.log('computer choice;', currentGame.computer.choice)
-    //   if (children[i].id !== (currentGame.player.choice || currentGame.computer.choice)) {
-    //     console.log('removing; ', children[i])
-    //     fighterSection.removeChild(children[i])
-    //   } else {
-    //     console.log('did not remove')
-    //   }
-    // }
     fighterSection.innerHTML = 
-    `
-    <img src="${iconKeys[currentGame.player.choice]}" alt="" id="${currentGame.player.choice}"/>
-    <img src="${iconKeys[currentGame.computer.choice]}" alt="" id="${currentGame.computer.choice}"/>
-    `;
+    `<img src="${iconKeys[currentGame.player.choice]}" alt="" id="${currentGame.player.choice}"/> <img src="${iconKeys[currentGame.computer.choice]}" alt="" id="${currentGame.computer.choice}"/>`;
   }, 1000);
 }
