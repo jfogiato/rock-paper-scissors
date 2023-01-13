@@ -6,7 +6,7 @@ class Game {
     this.fighters;
   }
 
-  setChoice(gameChoice) {
+  setGameChoice(gameChoice) {
     this.type = gameChoice === 'classicSection' ? 'Classic' : 'Hard';
   }
 
@@ -15,7 +15,7 @@ class Game {
     this.computer.resetChoice();
   }
 
-  getCleanBoard() {
+  resetBoard() {
     if (this.type === 'Classic') {
       this.fighters = ['🐱', '🧹', '🦴'];
     } else {

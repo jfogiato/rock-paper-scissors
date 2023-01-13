@@ -34,12 +34,12 @@ iconSection.addEventListener('click', (event) => {
 choiceSection.addEventListener('click', (event) => {
   var gameChoice = event.target.parentNode.id;
   if (gameChoice) {
-    currentGame.setChoice(gameChoice);
-    currentGame.getCleanBoard();
+    currentGame.setGameChoice(gameChoice);
+    currentGame.resetBoard();
     hide(choiceSection);
     show(fighterSection);
     show(changeGameSection);
-    toggleRules(gameChoice);
+    displayRules(gameChoice);
     generateFighters();
     updateHeader('Choose your fighter!');
   }
@@ -66,7 +66,7 @@ changeGameBtn.addEventListener('click', () => {
   hide(fighterSection);
   hide(changeGameSection);
   show(choiceSection);
-  toggleRules();
+  displayRules();
 });
 
 // Event Handlers/Functions 👇
@@ -86,7 +86,7 @@ function show(element) {
   element.classList.remove('hidden');
 }
 
-function toggleRules(gameChoice) {
+function displayRules(gameChoice) {
   ruleSection.innerHTML = '';
   if (gameChoice) {
     var section = document.getElementById(`${gameChoice}`).cloneNode(true);
