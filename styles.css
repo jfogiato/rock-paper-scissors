@@ -58,12 +58,15 @@ main {
 .icon-section {
   font-size: 10vh;
   display: flex;
-  /* height: 70vh; */
   width: 50vh;
-  align-items: center;
-  flex-wrap: wrap;
-  align-content: center;
+  height: 100%;
+  align-content: flex-start;
   justify-content: center;
+  flex-wrap: wrap;
+}
+
+.token {
+  margin: 0;
 }
 
 .token:hover {
@@ -125,13 +128,6 @@ h4 {
   flex-direction: row;
 }
 
-.rule-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
 .classic-fighters, .hard-fighters {
   display: flex;
   flex-direction: row;
@@ -165,7 +161,7 @@ img:hover {
 }
 
 .user-token, .computer-token{
-  font-size: 3vw;
+  font-size: 4vw;
 }
 
 button {
@@ -186,4 +182,12 @@ button:hover {
 button:active {
   transform:translateY(3px);
   box-shadow: 1px 1px 2px 2px;
+}
+
+.rule-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  cursor: default;
 }

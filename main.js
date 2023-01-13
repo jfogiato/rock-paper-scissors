@@ -75,15 +75,6 @@ function displayToken() {
   userToken.innerText = currentGame.player.token;
 }
 
-function generateNewGame(gameChoice) {
-  var type = gameChoice === 'classicSection' ? 'Classic' : 'Hard';
-  if (currentGame) {
-    currentGame.type = type;
-  } else {
-    currentGame = new Game(type);
-  }
-}
-
 function hide(element) {
   element.classList.add('hidden');
 }
@@ -93,10 +84,9 @@ function show(element) {
 }
 
 function toggleRules(gameChoice) {
-  var section = document.getElementById(`${gameChoice}`);
-  var rules = section.cloneNode(true);
+  var section = document.getElementById(`${gameChoice}`).cloneNode(true);
   ruleSection.innerHTML = '';
-  ruleSection.appendChild(rules);
+  ruleSection.appendChild(section);
 }
 
 function generateFighters() {
