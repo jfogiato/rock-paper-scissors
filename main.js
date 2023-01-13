@@ -6,10 +6,10 @@ var iconKeys = {
   '🦴': 'assets/cat-toy.png', 
   '💣': 'assets/nuke.png', 
   '✌️': 'assets/peace.png' 
-}
+};
 
 // DOM Element Variables 👇
-var iconSection = document.getElementById('iconSection')
+var iconSection = document.getElementById('iconSection');
 var userSection = document.getElementById('userSection');
 var userWins = document.getElementById('userWins');
 var userToken = document.getElementById('userToken');
@@ -22,7 +22,7 @@ var fighterSection = document.getElementById('fighterSection');
 var changeGameBtn = document.getElementById('changeGameButton');
 var changeGameSection = document.getElementById('buttonSection');
 var header2 = document.querySelector('h2');
-var ruleSection = document.getElementById('ruleSection')
+var ruleSection = document.getElementById('ruleSection');
 
 // Event Listeners 👇
 iconSection.addEventListener('click', (event) => {
@@ -67,7 +67,9 @@ fighterSection.addEventListener('click', (event) => {
 
 changeGameBtn.addEventListener('click', () => {
   hide(fighterSection);
+  hide(changeGameSection);
   show(choiceSection);
+  toggleRules();
 });
 
 // Event Handlers/Functions 👇
@@ -84,9 +86,11 @@ function show(element) {
 }
 
 function toggleRules(gameChoice) {
-  var section = document.getElementById(`${gameChoice}`).cloneNode(true);
   ruleSection.innerHTML = '';
-  ruleSection.appendChild(section);
+  if (gameChoice) {
+    var section = document.getElementById(`${gameChoice}`).cloneNode(true);
+    ruleSection.appendChild(section);
+  }
 }
 
 function generateFighters() {
