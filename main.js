@@ -130,7 +130,7 @@ function updateScores() {
 function updateBoard() {
   setTimeout(() => {
     fighterSection.innerHTML = 
-    `<img src="${iconKeys[currentGame.player.choice]}" alt="" id="${currentGame.player.choice}"/> <img src="${iconKeys[currentGame.computer.choice]}" alt="" id="${currentGame.computer.choice}"/>`;
+    `<img src="${iconKeys[currentGame.player.choice]}" alt="" class= "unclickable" id="${currentGame.player.choice}"/> <img src="${iconKeys[currentGame.computer.choice]}" alt="" class= "unclickable" id="${currentGame.computer.choice}"/>`;
   }, 500);
 }
 

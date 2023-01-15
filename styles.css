@@ -7,6 +7,10 @@
   display: none!important;
 }
 
+.unclickable {
+  pointer-events: none;
+}
+
 /* Whole Elements */
 body {
   display: flex;
