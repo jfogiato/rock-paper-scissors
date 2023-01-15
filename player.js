@@ -30,21 +30,16 @@ class Player {
     this.choice = '';
   }
 
-  // saveWinsToStorage() {
-  //   var userDetails = {
-  //     name: this.name,
-  //     wins: this.wins
-  //   };
-  //   window.localStorage.setItem('player', JSON.stringify(userDetails)); 
-  // }
+  saveWinsToStorage() {
+    window.localStorage.setItem(`${this.name}Wins`, this.wins)
+  }
 
-  // retrieveWinsFromStorage() {
-  //   this.name = window.localStorage.getItem('name');
-  //   this.wins = window.localStorage.getItem('wins');
-  // }
+  retrieveWinsFromStorage() {
+    this.wins = Number(window.localStorage.getItem(`${this.name}Wins`));
+  }
 
-  // clearWinsFromStorage() {
-  //   window.localStorage.clear();
-  // }
+  clearWinsFromStorage() {
+    window.localStorage.clear();
+  }
 }
 

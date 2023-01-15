@@ -21,10 +21,14 @@ var ruleSection = document.getElementById('ruleSection');
 var header2 = document.querySelector('h2');
 
 // Event Listeners 👇
+window.addEventListener('load', () => {
+  retrieveWins();
+  updateScores();
+})
+
 iconSection.addEventListener('click', (event) => {
   if (event.target.classList.contains("token")) {
     currentGame.player.updateToken(event.target.innerText);
-    // retrieveWins();
     displayToken();
     hide(iconSection);
     show(choiceSection);
@@ -56,8 +60,8 @@ fighterSection.addEventListener('click', (event) => {
     updateBoard();
     updateHeader();
     updateScores();
-    // saveWins();
     setTimeout( () => {
+      saveWins();
       generateFighters();
       updateHeader('Choose your fighter!');
       currentGame.resetChoices();
@@ -119,8 +123,8 @@ function updateHeader(newHeadText) {
 function updateScores() {
   setTimeout( () => {
     userWins.innerText = currentGame.player.wins;
-    computerWins.innerText = currentGame.computer.wins}
-    , 500);
+    computerWins.innerText = currentGame.computer.wins;
+  }, 500);
 }
 
 function updateBoard() {
@@ -131,11 +135,13 @@ function updateBoard() {
 }
 
 function saveWins() {
-  currentGame.player.saveWinsToStorage();
-  currentGame.computer.saveWinsToStorage();
+    currentGame.player.saveWinsToStorage();
+    currentGame.computer.saveWinsToStorage();
 }
 
 function retrieveWins() {
-  currentGame.player.retrieveWinsFromStorage();
-  currentGame.computer.retrieveWinsFromStorage();
+  setTimeout(() => {
+    currentGame.player.retrieveWinsFromStorage();
+    currentGame.computer.retrieveWinsFromStorage();
+  }, 200)
 }
