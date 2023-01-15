@@ -88,6 +88,7 @@ main {
 .token:hover {
   cursor: pointer;
   filter: drop-shadow(20px 20px 15px #9A9A9A);
+  transform: scale(1.2);
 }
 
 /* Main Section (Game Choices and Fighters) */
@@ -156,6 +157,7 @@ img {
 
 img:hover {
   filter: drop-shadow(20px 20px 15px #9a9a9a);
+  transform: scale(1.2);
 }
 
 /* User and Computer Section Components */
@@ -181,6 +183,7 @@ img:hover {
   cursor: default;
 }
 
+/* Sorry, Jeremiah - I hate this but I couldn't figure it out any other way 🥲 */
 .rule-section > .classic-rules:hover,
 .rule-section > .classic-rules:hover,
 .rule-section > .hard-rules:hover,
