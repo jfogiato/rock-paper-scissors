@@ -183,6 +183,7 @@ img:hover {
   cursor: default;
 }
 
+/* Sorry, Jeremiah - I hate this but I couldn't figure it out any other way 🥲 */
 .rule-section > .classic-rules:hover,
 .rule-section > .classic-rules:hover,
 .rule-section > .hard-rules:hover,
