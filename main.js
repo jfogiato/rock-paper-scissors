@@ -9,7 +9,7 @@ var iconKeys = {
 };
 
 // DOM Element Variables 👇
-var iconSection = document.getElementById('iconSection');
+var tokenSection = document.getElementById('iconSection');
 var userWins = document.getElementById('userWins');
 var userToken = document.getElementById('userToken');
 var computerWins = document.getElementById('computerWins');
@@ -18,7 +18,7 @@ var fighterSection = document.getElementById('fighterSection');
 var changeGameBtn = document.getElementById('changeGameButton');
 var changeGameSection = document.getElementById('buttonSection');
 var ruleSection = document.getElementById('ruleSection');
-var header2 = document.querySelector('h2');
+var variableHeader = document.querySelector('h2');
 
 // Event Listeners 👇
 window.addEventListener('load', () => {
@@ -26,11 +26,11 @@ window.addEventListener('load', () => {
   updateScores();
 })
 
-iconSection.addEventListener('click', (event) => {
+tokenSection.addEventListener('click', (event) => {
   if (event.target.classList.contains("token")) {
     currentGame.player.updateToken(event.target.innerText);
     displayToken();
-    hide(iconSection);
+    hide(tokenSection);
     show(choiceSection);
     updateHeader('Choose your game mode!');
   }
@@ -62,9 +62,9 @@ fighterSection.addEventListener('click', (event) => {
     updateScores();
     setTimeout( () => {
       saveWins();
+      currentGame.resetChoices();
       generateFighters();
       updateHeader('Choose your fighter!');
-      currentGame.resetChoices();
     }, 2000);
   }
 });
@@ -112,16 +112,16 @@ function generateFighters() {
 
 function updateHeader(newHeadText) {
   if (newHeadText) {
-    header2.innerText = newHeadText;
+    variableHeader.innerText = newHeadText;
   } else {
     setTimeout( () => {
-      header2.innerText = currentGame.determineWinner();
+      variableHeader.innerText = currentGame.determineWinner();
     }, 500);
   }
 }
 
 function updateScores() {
-  setTimeout( () => {
+  setTimeout(() => {
     userWins.innerText = currentGame.player.wins;
     computerWins.innerText = currentGame.computer.wins;
   }, 500);
@@ -130,7 +130,7 @@ function updateScores() {
 function updateBoard() {
   setTimeout(() => {
     fighterSection.innerHTML = 
-    `<img src="${iconKeys[currentGame.player.choice]}" alt="" class= "unclickable" id="${currentGame.player.choice}"/> <img src="${iconKeys[currentGame.computer.choice]}" alt="" class= "unclickable" id="${currentGame.computer.choice}"/>`;
+    `<img src="${iconKeys[currentGame.player.choice]}" alt="${currentGame.player.choice}" class= "unclickable" id="${currentGame.player.choice}"/> <img src="${iconKeys[currentGame.computer.choice]}" alt="${currentGame.computer.choice}" class= "unclickable" id="${currentGame.computer.choice}"/>`;
   }, 500);
 }
 
@@ -145,3 +145,5 @@ function retrieveWins() {
     currentGame.computer.retrieveWinsFromStorage();
   }, 200)
 }
+
+;
