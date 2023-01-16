@@ -62,9 +62,9 @@ fighterSection.addEventListener('click', (event) => {
     updateScores();
     setTimeout( () => {
       saveWins();
+      currentGame.resetChoices();
       generateFighters();
       updateHeader('Choose your fighter!');
-      currentGame.resetChoices();
     }, 2000);
   }
 });
@@ -130,7 +130,7 @@ function updateScores() {
 function updateBoard() {
   setTimeout(() => {
     fighterSection.innerHTML = 
-    `<img src="${iconKeys[currentGame.player.choice]}" alt="" class= "unclickable" id="${currentGame.player.choice}"/> <img src="${iconKeys[currentGame.computer.choice]}" alt="" class= "unclickable" id="${currentGame.computer.choice}"/>`;
+    `<img src="${iconKeys[currentGame.player.choice]}" alt="${currentGame.player.choice}" class= "unclickable" id="${currentGame.player.choice}"/> <img src="${iconKeys[currentGame.computer.choice]}" alt="${currentGame.computer.choice}" class= "unclickable" id="${currentGame.computer.choice}"/>`;
   }, 500);
 }
 
