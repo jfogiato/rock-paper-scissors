@@ -1,4 +1,4 @@
-# Fig, Vacuum, Chew Toy (Rock, Paper, Scissors)
+# [Fig, Vacuum, Chew Toy (Rock, Paper, Scissors)](https://jfogiato.github.io/rock-paper-scissors/)
 
 ## Abstract:
 [//]: <>
